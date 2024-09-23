@@ -13,7 +13,7 @@ public class SupplyController {
 
     @PostMapping("")
     public ResponseEntity<String> add(){
-        String regard = "Hello warehouse assistant user from transaction microservice.";
-        return new ResponseEntity<>(regard, HttpStatus.OK);
+        String greeting = "Hello warehouse assistant user from transaction microservice.";
+        return new ResponseEntity<>(greeting, HttpStatus.OK);
     }
 }

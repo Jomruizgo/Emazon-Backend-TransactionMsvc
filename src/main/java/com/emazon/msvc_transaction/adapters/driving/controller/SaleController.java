@@ -13,7 +13,7 @@ public class SaleController {
 
     @PostMapping("")
     public ResponseEntity<String> sell(){
-        String regard = "Hello client user from transaction microservice.";
-        return new ResponseEntity<>(regard, HttpStatus.OK);
+        String greeting = "Hello client user from transaction microservice.";
+        return new ResponseEntity<>(greeting, HttpStatus.OK);
     }
 }
