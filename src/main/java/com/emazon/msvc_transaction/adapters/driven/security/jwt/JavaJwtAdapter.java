@@ -1,4 +1,4 @@
-package com.emazon.msvc_transaction.adapters.driven.jwt;
+package com.emazon.msvc_transaction.adapters.driven.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

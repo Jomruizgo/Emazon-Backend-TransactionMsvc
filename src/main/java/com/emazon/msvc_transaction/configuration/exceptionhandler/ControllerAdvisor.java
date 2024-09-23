@@ -2,6 +2,7 @@ package com.emazon.msvc_transaction.configuration.exceptionhandler;
 
 
 import com.emazon.msvc_transaction.domain.exceptions.InvalidTokenException;
+import com.emazon.msvc_transaction.domain.exceptions.SupplyTransactionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,6 +25,13 @@ public class ControllerAdvisor {
         ));
     }
 
+    @ExceptionHandler(SupplyTransactionException.class)
+    public ResponseEntity<ExceptionResponse> handleSupplyTransactionException(SupplyTransactionException exception){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ExceptionResponse(
+                String.format(exception.getMessage()),
+                HttpStatus.CONFLICT.toString(), LocalDateTime.now()
+        ));
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {

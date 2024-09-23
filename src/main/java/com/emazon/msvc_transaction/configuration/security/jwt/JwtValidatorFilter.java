@@ -3,6 +3,7 @@ package com.emazon.msvc_transaction.configuration.security.jwt;
 import com.emazon.msvc_transaction.domain.exceptions.InvalidTokenException;
 import com.emazon.msvc_transaction.domain.spi.ITokenServicePort;
 import com.emazon.msvc_transaction.domain.util.AuthMessages;
+import com.emazon.msvc_transaction.domain.util.JwtClaim;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,13 +43,13 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
                 throw new InvalidTokenException(AuthMessages.INVALID_TOKEN_MESSAGE);
             }
 
-            String username = tokenPort.extractUsername(jwtToken);
-            String stringAuthorities = tokenPort.extractSpecificClaim(jwtToken,"authorities");
+            Long userid = Long.parseLong(tokenPort.extractSpecificClaim(jwtToken, JwtClaim.USER_ID.getClaimName()));
+            String stringAuthorities = tokenPort.extractSpecificClaim(jwtToken,JwtClaim.AUTHORITIES.getClaimName());
 
             Collection<? extends GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(stringAuthorities);
 
             SecurityContext context = SecurityContextHolder.createEmptyContext();
-            Authentication authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
+            Authentication authenticationToken = new UsernamePasswordAuthenticationToken(userid, null, authorities);
             context.setAuthentication(authenticationToken);
             SecurityContextHolder.setContext(context);
 
