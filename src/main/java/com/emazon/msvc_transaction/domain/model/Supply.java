@@ -1,6 +1,7 @@
 package com.emazon.msvc_transaction.domain.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Supply {
     private String id;
@@ -8,12 +9,12 @@ public class Supply {
     private Long warehouseAssistantId;
     private int quantityAdded;
     private LocalDateTime dateSupplied;
-    private LocalDateTime dateNextSupply;
+    private Date dateNextSupply;
     private int quantityNextSupply;
 
     public  Supply(){}
 
-    public Supply(String id, Long articleId, Long warehouseAssistantId, int quantityAdded, LocalDateTime dateSupplied, LocalDateTime dateNextSupply, int quantityNextSupply) {
+    public Supply(String id, Long articleId, Long warehouseAssistantId, int quantityAdded, LocalDateTime dateSupplied, Date dateNextSupply, int quantityNextSupply) {
         this.id = id;
         this.articleId = articleId;
         this.warehouseAssistantId = warehouseAssistantId;
@@ -63,11 +64,11 @@ public class Supply {
         this.dateSupplied = dateSupplied;
     }
 
-    public LocalDateTime getDateNextSupply() {
+    public Date getDateNextSupply() {
         return dateNextSupply;
     }
 
-    public void setDateNextSupply(LocalDateTime dateNextSupply) {
+    public void setDateNextSupply(Date dateNextSupply) {
         this.dateNextSupply = dateNextSupply;
     }
 

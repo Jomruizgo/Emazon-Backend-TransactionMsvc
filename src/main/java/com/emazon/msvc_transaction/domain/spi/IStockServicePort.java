@@ -1,5 +1,7 @@
 package com.emazon.msvc_transaction.domain.spi;
 
+import com.emazon.msvc_transaction.domain.model.StockRequest;
+
 public interface IStockServicePort {
-    void stockIncrease(Long articleId, int quantity);
+    boolean stockIncrease(StockRequest stockRequest);
 }

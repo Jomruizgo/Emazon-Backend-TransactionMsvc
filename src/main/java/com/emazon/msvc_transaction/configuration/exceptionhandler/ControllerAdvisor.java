@@ -2,6 +2,7 @@ package com.emazon.msvc_transaction.configuration.exceptionhandler;
 
 
 import com.emazon.msvc_transaction.domain.exceptions.InvalidTokenException;
+import com.emazon.msvc_transaction.domain.exceptions.StockUpdateFailedException;
 import com.emazon.msvc_transaction.domain.exceptions.SupplyTransactionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,14 @@ public class ControllerAdvisor {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ExceptionResponse(
                 String.format(exception.getMessage()),
                 HttpStatus.UNAUTHORIZED.toString(), LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(StockUpdateFailedException.class)
+    public ResponseEntity<ExceptionResponse> handleStockUpdateFailedException(StockUpdateFailedException exception){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ExceptionResponse(
+                String.format(exception.getMessage()),
+                HttpStatus.CONFLICT.toString(), LocalDateTime.now()
         ));
     }
 

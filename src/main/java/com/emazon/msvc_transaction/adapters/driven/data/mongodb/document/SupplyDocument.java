@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +23,6 @@ public class SupplyDocument {
     private Long warehouseAssistantId;
     private int quantityAdded;
     private LocalDateTime dateSupplied;
-    private LocalDateTime dateNextSupply;
+    private Date dateNextSupply;
     private int quantityNextSupply;
 }

@@ -49,7 +49,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
             Collection<? extends GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(stringAuthorities);
 
             SecurityContext context = SecurityContextHolder.createEmptyContext();
-            Authentication authenticationToken = new UsernamePasswordAuthenticationToken(userid, null, authorities);
+            Authentication authenticationToken = new UsernamePasswordAuthenticationToken(userid, jwtToken, authorities);
             context.setAuthentication(authenticationToken);
             SecurityContextHolder.setContext(context);
 

@@ -1,8 +1,8 @@
 package com.emazon.msvc_transaction.domain.util;
 
 
-public final class Constants {
-    private Constants() {
+public final class TestConstants {
+    private TestConstants() {
         throw new IllegalStateException("Utility class");
     }
 
